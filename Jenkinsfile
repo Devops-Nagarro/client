@@ -12,8 +12,6 @@ pipeline {
                 echo 'Testing..'
             }
         }
-stage 'approve build'
-input 'Do you approve deployment?'
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
