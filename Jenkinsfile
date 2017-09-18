@@ -12,8 +12,9 @@ pipeline {
                 echo 'Testing..'
             }
         }
+stage 'approve build'
+input 'Do you approve deployment?'
         stage('Deploy') {
-	input 'Do you approve deployment?'
             steps {
                 echo 'Deploying....'
             }
