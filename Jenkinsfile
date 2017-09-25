@@ -24,7 +24,7 @@ pipeline {
           
         stage('Deploy') {
             steps {
-                input message: 'Please approve', submitter: 'admin'
+                mail bcc: '', body: 'Please go to ${env.BUILD_URL}."', cc: '', from: '', replyTo: '', subject: 'Job \'${env.JOB_NAME}\' (${env.BUILD_NUMBER}) is waiting for input', to: 'sweta.ghosh@nagarro.com
                 nexusArtifactUploader artifacts: [[artifactId: 'helloworld', classifier: 'debug', file: 'target/helloworld.war', type: 'war']], credentialsId: 'nexus', groupId: 'testgroup', nexusUrl: '54.224.88.35:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'helloworld', version: '4'
 
             }
