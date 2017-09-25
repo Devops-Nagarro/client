@@ -20,11 +20,7 @@ pipeline {
             steps {
                 echo 'Testing..'
             }
-            stage('Deploy') {
-                steps {
-                    mail bcc: '', body: 'Please go to ${env.BUILD_URL}."', cc: '', from: '', replyTo: '', subject: 'Job \'${env.JOB_NAME}\' (${env.BUILD_NUMBER}) is waiting for input', to: 'sweta.ghosh@nagarro.com'
-                }
-        }
+          
         stage('Deploy') {
             steps {
                 input message: 'Please approve', submitter: 'admin'
