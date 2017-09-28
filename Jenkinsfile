@@ -40,12 +40,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                wrap([$class: 'BuildUser']) {
-                    
-                    echo "userID: ${BUILD_USER_ID}"
-                    echo "user email address; ${BUILD_USER_EMAIL}"
-                }
-                mail to: 'vinay.thakur@nagarro.com', subject: "Job name: ${env.JOB_NAME}" , body: "Executor name: ${env.EXECUTOR_NUMBER} \n Job url: ${env.JOB_URL}"
+                mail to: 'vinay.thakur@nagarro.com', subject: "Job name: ${env.JOB_NAME}" , body: "Please approve \n Job url: ${env.JOB_URL}"
                 input message: 'Please approve', submitter: 'vinay'
                 nexusArtifactUploader artifacts: [[artifactId: 'helloworld', classifier: 'debug', file: 'target/helloworld.war', type: 'war']], credentialsId: 'nexus', groupId: 'testgroup', nexusUrl: '34.203.241.217:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'helloworld', version: '4'
 
